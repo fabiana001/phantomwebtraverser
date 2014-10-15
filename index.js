@@ -1,0 +1,32 @@
+//module.exports = function () {
+//  return 'Hello, world';
+//};
+//
+//var Position = require('./lib/position');
+//
+//var position = new Position(1,2,3,4);
+//
+//console.log(JSON.stringify(position));
+//
+//var WebElement = require('./lib/webelement');
+//
+//var element = new WebElement("body", "body",
+//    "body", "body", position, "position", {att: 1},
+//    "prova", null);
+//
+//console.log(element.toString())
+
+var Traverser = require('./lib/pagetraverser');
+var WebElement = require('./lib/webelement');
+
+var start = Date.now();
+Traverser.traverse('http://www.baritoday.it/cronaca/', function(err,data){
+    console.log(WebElement.prototype.toString.call(data));
+    var end = Date.now();
+    console.log((end - start).toString() + "ms");
+});
+
+var url = require('url');
+console.log( url.parse(
+    'http://user:pass@host.com:8080/p/a/t/h?query=string#hash', true
+));
