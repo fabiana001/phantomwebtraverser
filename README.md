@@ -11,6 +11,9 @@ This is  is installed via npm:
 ``` bash
 $ npm install
 ```
+### dependencies 
+
+1. [phantomjs](http://phantomjs.org/)
 
 ## Example Usage
 to start the service just run
