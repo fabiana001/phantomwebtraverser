@@ -18,9 +18,10 @@ app.route('/traverse')
         if (!url) {
             res.status(500).send('{}');
         } else {
+            console.log('got request from ' + url);
 
             var start = Date.now();
-            Traverser.traverse('http://www.baritoday.it/cronaca/', function (err, data) {
+            Traverser.traverse(url, function (err, data) {
 
                 if (err) {
                     res.status(500).send(err);
@@ -38,6 +39,6 @@ var server = app.listen(3000, function () {
     var host = server.address().address
     var port = server.address().port
 
-    console.log('Example app listening at http://%s:%s', host, port)
+    console.log('phantomwebtraverser app listening at http://%s:%s', host, port)
 
 })
