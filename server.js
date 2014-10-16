@@ -11,6 +11,19 @@ app.use(function (err, req, res, next) {
     res.status(500).send('Something broke!');
 });
 
+/**
+ * function made to decode coded urls
+ * @param url
+ * @returns {*}
+ */
+function decodeUrl(url){
+    var uri = url;
+    for (var i=0; i<6; i++){
+        uri = decodeURIComponent(uri);
+    }
+    return uri;
+}
+
 app.route('/traverse')
     .get(function (req, res, next) {
         var url = req.query.url;
@@ -21,8 +34,10 @@ app.route('/traverse')
         } else {
             console.log('got request from ' + url);
 
+            var uri = decodeUrl(url);
+
             var start = Date.now();
-            Traverser.traverse(url, function (err, data) {
+            Traverser.traverse(uri, function (err, data) {
 
                 if (err) {
                     console.log("error " + err.status + " in getting url " + err.url);

@@ -16,17 +16,19 @@
 //
 //console.log(element.toString())
 
-var Traverser = require('./lib/pagetraverser');
-var WebElement = require('./lib/webelement');
+//var Traverser = require('./lib/pagetraverser');
+//var WebElement = require('./lib/webelement');
+//
+//var start = Date.now();
+//Traverser.traverse('http://www.baritoday.it/cronaca/', function(err,data){
+//    console.log(WebElement.prototype.toString.call(data));
+//    var end = Date.now();
+//    console.log((end - start).toString() + "ms");
+//});
 
-var start = Date.now();
-Traverser.traverse('http://www.baritoday.it/cronaca/', function(err,data){
-    console.log(WebElement.prototype.toString.call(data));
-    var end = Date.now();
-    console.log((end - start).toString() + "ms");
-});
+//var url = require('url');
+//console.log( url.parse(
+//    'http://www.di.uniba.it/%25257Ebianchi/shortcv_ita.htm', true
+//));
 
-var url = require('url');
-console.log( url.parse(
-    'http://user:pass@host.com:8080/p/a/t/h?query=string#hash', true
-));
+console.log(decodeURIComponent(decodeURIComponent(decodeURIComponent(decodeURIComponent('http://www.di.uniba.it/%25257Ebianchi/shortcv_ita.htm')))));
