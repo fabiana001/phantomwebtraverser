@@ -16,6 +16,7 @@ app.route('/traverse')
         var url = req.query.url;
 
         if (!url) {
+            console.log("invalid url " + url);
             res.status(500).send('{}');
         } else {
             console.log('got request from ' + url);
@@ -24,7 +25,8 @@ app.route('/traverse')
             Traverser.traverse(url, function (err, data) {
 
                 if (err) {
-                    res.status(500).send(err);
+                    console.log("error " + err.status + " in getting url " + err.url);
+                    res.status(err.status).send(err.url);
                 } else {
                     res.json(data);
                     var end = Date.now();
