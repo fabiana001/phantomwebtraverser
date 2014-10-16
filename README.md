@@ -34,6 +34,10 @@ sudo ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/bin/phantomjs
 3. Now, It (should) have PhantomJS properly on your system.
 
 ``` bash
+phantomjs --version
+```
+
+``` bash
 sudo apt-get install libfreetype6 libfreetype6-dev
 sudo apt-get install libfontconfig1
 ```
