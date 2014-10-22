@@ -43,6 +43,7 @@ app.route('/traverse')
             var getStart = Date.now();
             redisClient.get(uri, function(err,data){
                 if (!data){
+                    console.log("no data found in redis for " + uri);
                     var start = Date.now();
                     Traverser.traverse(uri, function (err, data) {
 

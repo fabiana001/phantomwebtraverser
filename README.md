@@ -45,14 +45,16 @@ in order to cache made request we add the support of redis. To install redis che
  
  In order to use redis as cache we need to take into account the following [article](http://redis.io/topics/lru-cache)
   and to set maxmemory parameter in the redis.conf file normally in etc folder for linux.
+  A detailed installation guide can be found at [this link](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-redis) 
   
-  ```bash
+  ```
   
   maxmemory 2GB
   
   maxmemory-policy volatile-lru
   
   ```
+  
  
 
 5. If you have a mac you can use
