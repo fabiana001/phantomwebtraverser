@@ -38,7 +38,24 @@ sudo apt-get install libfreetype6 libfreetype6-dev
 sudo apt-get install libfontconfig1
 ```
 
-4. If you have a mac you can use
+4. redis support
+
+in order to cache made request we add the support of redis. To install redis check on [redis website](http://redis.io/download)
+ there is an explanation for every operating system.
+ 
+ In order to use redis as cache we need to take into account the following [article](http://redis.io/topics/lru-cache)
+  and to set maxmemory parameter in the redis.conf file normally in etc folder for linux.
+  
+  ```bash
+  
+  maxmemory 2GB
+  
+  maxmemory-policy volatile-lru
+  
+  ```
+ 
+
+5. If you have a mac you can use
 
 ```
 brew install phantomjs
