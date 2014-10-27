@@ -20,7 +20,8 @@
       "phantom" : "^0.6.5",
       "express": "~4.9.7",
       "redis": "~0.12.1",
-      "hiredis": "~0.1.17"
+      "hiredis": "~0.1.17",
+      "log4js": "~0.6.x"
   },
   "devDependencies": {
     "chai": "~1.8.1",
