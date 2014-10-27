@@ -17,7 +17,8 @@ var logger = log4js.getLogger('traverser');
 logger.setLevel("DEBUG");
 
 var Traverser = require('./lib/pagetraverser');
-var Response = require('./lib/response')
+var Response = require('./lib/response');
+var Error = require('./lib/error');
 
 var redis = require('redis');
 var redisClient = redis.createClient();
@@ -54,7 +55,7 @@ app.route('/traverse')
                         logger.info(uri + " processed in " + (end - start).toString() + "ms");
 
                         if (err) {
-                            logger.error("traverser got error " + err.toString() + " for url " + uri);
+                            logger.error("traverser got error " + JSON.stringify(err) + " for url " + uri);
                             res.status(err.code).json(response);
                         } else {
                             res.json(response);
