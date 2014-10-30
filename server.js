@@ -67,7 +67,53 @@ app.route('/traverse')
                     logger.info(uri + " processed from redis in " + (end - startTime).toString() + "ms")
                     console.log((end - startTime).toString() + "ms");
                     res.json(JSON.parse(data));
+                }
+            });
+        }
+    });
 
+app.route('/traverseAsync').
+    get(function (req, res, next) {
+        var url = req.query.url;
+
+        if (!url) {
+            logger.error("url not set error ");
+            res.status(500).json(new Response(url, null, null, 500, "invalid url parameter" + url))
+        } else {
+            var uri = decodeUrl(url);
+            logger.info('getting url ' + uri);
+
+            var startTimeRedis = Date.now();
+            redisClient.get(uri, function (err, data) {
+
+                if (!data) {
+                    logger.info('no data found on redis traversing from the web');
+                    var startTimeWeb = Date.now();
+                    Traverser.traverseAsync(url, function (err, response) {
+                        var endTimeWeb = Date.now();
+
+                        //save data to redis
+                        redisClient.set(uri, response, function (err, reply) {
+                            if (err)
+                                logger.error("Error on saving data for url " + uri + " on redis with error " + err.message);
+                            else
+                                logger.info("Data for url " + uri + " correctly saved on redis")
+                        });
+                        redisClient.expire(uri, expireTime);
+
+                        if (err) {
+                            var resp = new Response(url, null, null);
+                            resp.setError(new Error('-1', err.message));
+                            res.status('404').json(resp);
+                        } else {
+                            res.send(JSON.parse(response));
+                        }
+                        logger.info("Web traversing result for " + uri + " returned in " + (endTimeWeb - startTimeWeb) + "ms");
+                    });
+                } else {
+                    var endTimeRedis = Date.now();
+                    logger.info("Redis result for " + uri + " returned in " + (endTimeRedis - startTimeRedis) + "ms");
+                    res.json(JSON.parse(data));
                 }
             });
         }

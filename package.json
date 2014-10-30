@@ -21,7 +21,10 @@
       "express": "~4.9.7",
       "redis": "~0.12.1",
       "hiredis": "~0.1.17",
-      "log4js": "~0.6.x"
+      "log4js": "~0.6.x",
+      "phantomjs": "~1.9.12",
+      "path": "~0.4.9"
+
   },
   "devDependencies": {
     "chai": "~1.8.1",
