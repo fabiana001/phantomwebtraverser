@@ -26,26 +26,26 @@
 //    console.log((end - start).toString() + "ms");
 //});
 
-//var url = require('url');
-//console.log( url.parse(
-//    'http://www.di.uniba.it/%25257Ebianchi/shortcv_ita.htm', true
-//));
+var url = require('url');
+console.log( url.parse(
+    'http://www.di.uniba.it/%25257Ebianchi/shortcv_ita.htm', true
+));
 
 //console.log(decodeURIComponent(decodeURIComponent(decodeURIComponent(decodeURIComponent('http://www.di.uniba.it/%25257Ebianchi/shortcv_ita.htm')))));
 
 
-var phantom = require('phantom');
-
-phantom.create(function (ph) {
-    ph.createPage(function (page) {
-        page.open("http://www.google.com", function (status) {
-            console.log("opened google? ", status);
-            var result = page.evaluate(function () { return this.location; }, function (result) {
-                ph.exit();
-                console.log(result);
-                return result;
-            });
-            console.log(result);
-        });
-    });
-});
+//var phantom = require('phantom');
+//
+//phantom.create(function (ph) {
+//    ph.createPage(function (page) {
+//        page.open("http://www.google.com", function (status) {
+//            console.log("opened google? ", status);
+//            var result = page.evaluate(function () { return this.location; }, function (result) {
+//                ph.exit();
+//                console.log(result);
+//                return result;
+//            });
+//            console.log(result);
+//        });
+//    });
+//});
