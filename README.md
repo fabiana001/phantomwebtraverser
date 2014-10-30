@@ -1,3 +1,5 @@
+it will listen on localhost on port 3000 by default.
+=======
 # nodewebtraverser
 
 web page traverser implemented in node using phantomjs
@@ -73,3 +75,9 @@ nodemon server.js
 ```
 
 it will listen on localhost on port 3000 by default.
+
+
+## FAQ
+
+### redis on high load stops
+I found a possible solution to this problem on this [link](http://stackoverflow.com/questions/14460528/redis-periodicly-stops-responding-on-high-load)
