@@ -68,11 +68,23 @@ brew install phantomjs
 for more documentation check the [official documentation](http://phantomjs.org/download.html) and the [this gist](https://gist.github.com/julionc/7476620)
 
 
-## Example Usage
+## Example Usage using nodemon
 to start the service just run
 ``` js
 nodemon server.js
 ```
+
+##Example usage using Forever
+To start the service and to be sure that it is every time restart if it has an error we can use the [forever utility](http://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/).
+In order to use forever follow the [installing instruction](http://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/).
+To run phantompagetraverser with forever just run
+
+```js
+
+forever start server.js
+
+```
+
 
 it will listen on localhost on port 3000 by default.
 
