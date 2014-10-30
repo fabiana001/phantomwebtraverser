@@ -97,7 +97,7 @@ app.route('/traverseAsync').
                             parsedResponse.error = null;
 
                         //save data to redis
-                        redisClient.set(uri, parsedResponse, function (err, reply) {
+                        redisClient.set(uri, JSON.stringify(parsedResponse), function (err, reply) {
                             if (err)
                                 logger.error("Error on saving data for url " + uri + " on redis with error " + err.message);
                             else
