@@ -92,8 +92,12 @@ app.route('/traverseAsync').
                     Traverser.traverseAsync(url, function (err, response) {
                         var endTimeWeb = Date.now();
 
+                        var parsedResponse = JSON.parse(response);
+                        if (!parsedResponse.error)
+                            parsedResponse.error = null;
+
                         //save data to redis
-                        redisClient.set(uri, response, function (err, reply) {
+                        redisClient.set(uri, parsedResponse, function (err, reply) {
                             if (err)
                                 logger.error("Error on saving data for url " + uri + " on redis with error " + err.message);
                             else
@@ -106,7 +110,7 @@ app.route('/traverseAsync').
                             resp.setError(new Error('-1', err.message));
                             res.status('404').json(resp);
                         } else {
-                            res.send(JSON.parse(response));
+                            res.json(parsedResponse);
                         }
                         logger.info("Web traversing result for " + uri + " returned in " + (endTimeWeb - startTimeWeb) + "ms");
                     });
