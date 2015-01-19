@@ -28,4 +28,4 @@ COPY run.sh /data/run.sh
 # replace this with your application's default port
 EXPOSE 3000
 
-CMD ["/bin/bash","data/run.sh"]
+CMD ["/bin/bash","/data/run.sh"]
