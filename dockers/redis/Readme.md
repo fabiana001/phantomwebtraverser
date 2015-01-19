@@ -38,9 +38,9 @@ This repository contains **Dockerfile** of [Redis](http://redis.io/) for [Docker
 
 
 
-#### old run
+#### Server Run
 
-    docker run --name web-redis -d -p 6379:6379 -v "$(pwd)"/redis_data:/data wheretolive/redis redis-server --appendonly yes
+    docker run --name web-redis -d -p 6379:6379 -v "$(pwd)"/redis_data:/data wheretolive/redis
 
 If persistence is enabled, data is stored in the `VOLUME /data`, which can be
 used with `--volumes-from some-volume-container` or `-v /docker/host/dir:/data`
