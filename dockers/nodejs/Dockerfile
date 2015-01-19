@@ -23,6 +23,8 @@ VOLUME ["/data/"]
 # Define working directory.
 WORKDIR /data
 
+COPY package.json /data/
+
 RUN npm install
 
 # replace this with your application's default port
