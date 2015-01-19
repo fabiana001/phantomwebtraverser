@@ -23,9 +23,11 @@ VOLUME ["/data/"]
 # Define working directory.
 WORKDIR /data
 
-COPY run.sh /data/run.sh
+ADD package.json /tmp/package.json
+RUN cd /tmp && npm install
+RUN  cp -a /tmp/node_modules /data/
 
 # replace this with your application's default port
 EXPOSE 3000
 
-CMD ["/bin/bash","/data/run.sh"]
+CMD ["forever","server.js"]

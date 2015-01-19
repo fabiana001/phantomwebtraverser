@@ -48,3 +48,11 @@ used with `--volumes-from some-volume-container` or `-v /docker/host/dir:/data`
 
 For more about Redis Persistence, see
 [http://redis.io/topics/persistence](http://redis.io/topics/persistence).
+
+##### Usage with VirtualBox (boot2docker-vm)
+
+_You will need to set up nat port forwarding with:_
+
+    VBoxManage modifyvm "boot2docker-vm" --natpf1 "redis6379,tcp,127.0.0.1,6379,,6379"
+
+This will allow you to connect to your elasticsearch using localhost
