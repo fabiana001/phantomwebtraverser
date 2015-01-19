@@ -33,7 +33,7 @@ sudo ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/local/bin/phantomjs
 sudo ln -sf /usr/local/share/$PHANTOM_JS/bin/phantomjs /usr/bin/phantomjs
 ```
 
-3. Now, It (should) have PhantomJS properly on your system.
+3. Now, It (should) has PhantomJS properly on your system.
 
 ``` bash
 sudo apt-get install libfreetype6 libfreetype6-dev
