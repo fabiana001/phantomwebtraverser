@@ -1,12 +1,17 @@
-FROM redis
+FROM dockerfile/redis
 
 MAINTAINER Fabio Fumarola <fabiofumarola@gmail.com>
 
-VOLUME /data
+# Define mountable directories.
+VOLUME ["/data"]
 
+# Define working directory.
 WORKDIR /data
 
-EXPOSE 6379
+COPY redis.conf /etc/redis/redis.conf
 
-COPY redis.conf /usr/local/etc/redis/redis.conf
-CMD [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+# Define default command.
+CMD ["redis-server", "/etc/redis/redis.conf"]
+
+# Expose ports.
+EXPOSE 6379
