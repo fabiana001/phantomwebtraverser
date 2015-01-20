@@ -21,7 +21,7 @@ var Response = require('./lib/response');
 var Error = require('./lib/error');
 
 var redis = require('redis');
-var redisClient = redis.createClient(6379, '0.0.0.0', {});
+var redisClient = redis.createClient(6379, 'redis'); //redis is an /etc/host name ip pair
 //var redisClient = redis.createClient();
 var expireTime = 60 * 60 * 48 //60 seconds * 60 minutes * 2 equivalent to 48 hours
 

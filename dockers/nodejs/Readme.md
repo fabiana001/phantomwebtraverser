@@ -26,6 +26,9 @@ for phantom.js we installed the package
 
 ### Usage
 
-go into the folder of the project
+go into the folder of the project, remember to check that a redis istance named web-redis is started.
+Giving the --link name-container:redis nodejs can connect to the redis instance.
+Checks [here](http://stackoverflow.com/questions/28020852/fail-to-link-redis-container-to-node-js-container-in-docker)
+for more infos.
 
-    docker run -d --name traverser1 -v "$(pwd)":/data -p 3000:3000 wheretolive/nodejs_phantom
+    docker run -d --name traverser -v "$(pwd)":/data -p 3000:3000 --link web-redis:redis wheretolive/nodejs_phantom
