@@ -55,4 +55,4 @@ _You will need to set up nat port forwarding with:_
 
     VBoxManage modifyvm "boot2docker-vm" --natpf1 "redis6379,tcp,127.0.0.1,6379,,6379"
 
-This will allow you to connect to your elasticsearch using localhost
+This will allow you to connect to your redis using localhost

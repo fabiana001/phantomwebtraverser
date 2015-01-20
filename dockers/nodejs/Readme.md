@@ -28,4 +28,4 @@ for phantom.js we installed the package
 
 go into the folder of the project
 
-    docker run -d --name phantomwebtraverser -v "$(pwd)":/data -p 3000:3000 wheretolive/nodejs_phantom
+    docker run -d --name traverser1 -v "$(pwd)":/data -p 3000:3000 wheretolive/nodejs_phantom
