@@ -42,6 +42,12 @@ This repository contains **Dockerfile** of [Redis](http://redis.io/) for [Docker
 
     docker run --name web-redis -d -p 6379:6379 -v "$(pwd)"/redis_data:/data wheretolive/redis
 
+
+#### Phantom Traverse Redis Start
+-------------------------------
+
+    docker run --name web-redis -d -v "$(pwd)"/redis_data:/data wheretolive/redis
+
 If persistence is enabled, data is stored in the `VOLUME /data`, which can be
 used with `--volumes-from some-volume-container` or `-v /docker/host/dir:/data`
 (see [docs.docker volumes](http://docs.docker.com/userguide/dockervolumes/)).
