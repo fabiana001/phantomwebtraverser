@@ -1,4 +1,4 @@
-FROM dockerfile/redis
+FROM dockerfile/redis:latest
 
 MAINTAINER Fabio Fumarola <fabiofumarola@gmail.com>
 
