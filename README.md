@@ -28,9 +28,8 @@ To do when you don't have the wheretolive/nodejs_phantom image
 
 2. build the image `docker build -t="wheretolive/nodejs_phantom" ./`
 
-### Usage
-
-3. run the following command
+### 3. Run Traverser
+run the following command
 
 ```
 docker run -d --name traverser -v "$(pwd)":/data -p 15000:3000 --link web-redis:redis wheretolive/nodejs_phantom
