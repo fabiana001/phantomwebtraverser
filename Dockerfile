@@ -1,8 +1,8 @@
-FROM node:latest
+FROM node:5.6
 
 MAINTAINER Fabio Fumarola <fabiofumarola@gmail.com>
 
-ENV PHANTOM_JS phantomjs-1.9.8-linux-x86_64
+ENV PHANTOM_JS phantomjs-2.1.1-linux-x86_64
 
 RUN \
 	apt-get update && \
@@ -22,6 +22,9 @@ VOLUME ["/data/"]
 
 # Define working directory.
 WORKDIR /data
+
+COPY . /data
+RUN mkdir -p log
 
 ADD package.json /tmp/package.json
 RUN cd /tmp && npm install

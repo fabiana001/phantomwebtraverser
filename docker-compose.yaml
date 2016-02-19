@@ -1,0 +1,8 @@
+traverser:
+  build: .
+  ports:
+    - "3000:3000"
+  links:
+    - redis:redis
+redis:
+  image: redis
