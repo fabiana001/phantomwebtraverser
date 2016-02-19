@@ -30,49 +30,6 @@ app.use(function (err, req, res, next) {
     res.status(500).send('Something broke!');
 });
 
-app.route('/traverse')
-    .get(function (req, res, next) {
-        var url = req.query.url;
-
-        if (!url) {
-            console.log("invalid url " + url);
-            res.status(500).json(new Response(url, null, null, 500, "invalid url parameter" + url))
-        } else {
-
-            logger.info('processing request for ' + url);
-            var uri = decodeUrl(url);
-
-            var startTime = Date.now();
-            redisClient.get(uri, function (err, data) {
-                if (!data) {
-                    logger.info("no data found in redis for " + uri);
-                    var start = Date.now();
-
-                    Traverser.traverse(uri, function (err, response) {
-                        var end = Date.now();
-                        //save to redis instance
-                        redisClient.set(uri, JSON.stringify(response), redis.print);
-                        redisClient.expire(uri, expireTime, redis.print);
-                        logger.info(uri + " processed in " + (end - start).toString() + "ms");
-
-                        if (err) {
-                            logger.error("traverser got error " + JSON.stringify(err) + " for url " + uri);
-                            res.status(err.code).json(response);
-                        } else {
-                            res.json(response);
-                        }
-
-                    });
-                } else {
-                    var end = Date.now();
-                    logger.info(uri + " processed from redis in " + (end - startTime).toString() + "ms")
-                    console.log((end - startTime).toString() + "ms");
-                    res.json(JSON.parse(data));
-                }
-            });
-        }
-    });
-
 app.route('/traverseAsync').
     get(function (req, res, next) {
         var url = req.query.url;
