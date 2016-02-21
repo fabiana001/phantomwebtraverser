@@ -24,13 +24,10 @@ VOLUME ["/data/"]
 WORKDIR /data
 
 COPY . /data
-RUN mkdir -p log
-
-ADD package.json /tmp/package.json
-RUN cd /tmp && npm install
-RUN cp -a /tmp/node_modules /data/
 
 # replace this with your application's default port
 EXPOSE 3000
+
+ENTRYPOINT ["/data/docker-entrypoint.sh"]
 
 CMD ["forever","server.js"]
