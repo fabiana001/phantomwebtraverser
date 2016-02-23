@@ -83,11 +83,7 @@ get(function (req, res, next) {
             if (!data) {
                 logger.info('no data found on redis traversing from the web');
                 var startTimeWeb = Date.now();
-
-                //await randomly from 500 ms to 1500 ms
-                var DOWNLOAD_DELAY = getRandomArbitrary(500, 1500);
-
-                setTimeout( Traverser.traverseAsync(url, function (err, response) {
+                Traverser.traverseAsync(url, function (err, response) {
                     var endTimeWeb = Date.now();
 
                     var parsedResponse = JSON.parse(response);
@@ -111,34 +107,7 @@ get(function (req, res, next) {
                         res.json(parsedResponse);
                     }
                     logger.info("Web traversing result for " + uri + " returned in " + (endTimeWeb - startTimeWeb) + "ms");
-                }), DOWNLOAD_DELAY );
-
-
-                //Traverser.traverseAsync(url, function (err, response) {
-                //    var endTimeWeb = Date.now();
-                //
-                //    var parsedResponse = JSON.parse(response);
-                //    if (!parsedResponse.error)
-                //        parsedResponse.error = null;
-                //
-                //    //save data to redis
-                //    redisClient.set(uri, JSON.stringify(parsedResponse), function (err, reply) {
-                //        if (err)
-                //            logger.error("Error on saving data for url " + uri + " on redis with error " + err.message);
-                //        else
-                //            logger.info("Data for url " + uri + " correctly saved on redis")
-                //    });
-                //    redisClient.expire(uri, expireTime);
-                //
-                //    if (err) {
-                //        var resp = new Response(url, null, null);
-                //        resp.setError(new Error('-1', err.message));
-                //        res.status('404').json(resp);
-                //    } else {
-                //        res.json(parsedResponse);
-                //    }
-                //    logger.info("Web traversing result for " + uri + " returned in " + (endTimeWeb - startTimeWeb) + "ms");
-                //});
+                });
             } else {
                 var endTimeRedis = Date.now();
                 logger.info("Redis result for " + uri + " returned in " + (endTimeRedis - startTimeRedis) + "ms");
@@ -168,8 +137,4 @@ function decodeUrl(url) {
         uri = decodeURIComponent(uri);
     }
     return uri;
-}
-
-function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
 }
