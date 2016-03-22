@@ -24,7 +24,9 @@
       "hiredis": "~0.4.1",
       "log4js": "~0.6.x",
       "phantomjs": "~2.1.3",
-      "path": "~0.12.7"
+      "path": "~0.12.7",
+      "object-sizeof": "*",
+      ""
 
   },
   "devDependencies": {
